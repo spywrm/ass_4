@@ -109,23 +109,23 @@ class _HomeState extends State<Home> {
           child: Padding(
             padding: const EdgeInsets.all(5.0),
             child: ElevatedButton(
-                onPressed: () {
-                  for (int i = 0; i < list.length; i++) {
-                    if (list[i] == false) {
-                      setState(() {
-                        Click(true);
-                      });
-                      break;
-                    }
+              onPressed: () {
+                for (int i = 0; i < list.length; i++) {
+                  if (list[i] == false) {
+                    setState(() {
+                      Click(true);
+                    });
+                    break;
                   }
-                },
+                }
+              },
               child: Icon(Icons.person, size: 27),
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                  primary: Colors.blue[300],
-                  fixedSize: Size(10,45),
-                ),
-
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8)),
+                primary: Colors.blue[300],
+                fixedSize: Size(10, 45),
+              ),
             ),
           ),
         ),
@@ -145,11 +145,11 @@ class _HomeState extends State<Home> {
               },
               child: Icon(Icons.person, size: 27),
               style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8)),
                 primary: Colors.pink[300],
-                fixedSize: Size(10,45),
+                fixedSize: Size(10, 45),
               ),
-
             ),
           ),
         ),
@@ -214,21 +214,55 @@ class _HomeState extends State<Home> {
   //   );
   // }
 
+  // Widget Buttonmodel2() {
+  //   return Row(
+  //     children: [
+  //       Expanded(
+  //         child: Padding(
+  //           padding: const EdgeInsets.all(5.0),
+  //           child: InkWell(
+  //             child: Container(
+  //               height: 47,
+  //               decoration: BoxDecoration(
+  //                 color: Colors.black26,
+  //                 borderRadius: BorderRadius.circular(8),
+  //               ),
+  //               child: Icon(Icons.clear, size: 27),
+  //             ),
+  //           ),
+  //         ),
+  //       ),
+  //     ],
+  //   );
+  // }
+  void ResetButton2(){
+    setState(() {
+      for(int i=0;i<list.length;i++){
+        list[i]=false;
+
+      }
+      statusButton = true;
+      totalblue = 0;
+      totalpink = 0;
+    });
+  }
   Widget Buttonmodel2() {
     return Row(
       children: [
         Expanded(
           child: Padding(
             padding: const EdgeInsets.all(5.0),
-            child: InkWell(
-              child: Container(
-                height: 47,
-                decoration: BoxDecoration(
-                  color: Colors.black26,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Icon(Icons.clear, size: 27),
+            child: ElevatedButton(
+              onPressed:ResetButton2,
+              child: Icon(Icons.clear,size:27),
+              style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                  ),
+                primary: Colors.black26.withOpacity(0),
+                  fixedSize: Size(10, 45),
               ),
+
             ),
           ),
         ),
@@ -331,7 +365,7 @@ class _HomeState extends State<Home> {
           SizedBox(
             height: 17,
           ),
-          statusButton == true ?Buttonmodel1():Buttonmodel2(),
+          statusButton == true ? Buttonmodel1() : Buttonmodel2(),
         ],
       ),
     );
